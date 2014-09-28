@@ -90,6 +90,8 @@ public class RunInfo {
     public void singleSetup(){
 //Reads the config file
     	try{
+    	configFileName = "./configSingle.txt"; 
+    	
     	File configFile = new File(configFileName);
         Scanner in = new Scanner(configFile);
         String line  = in.nextLine();

@@ -58,15 +58,15 @@ public class Compiler
     //	System.out.println("Compile Directory: " + "." + classPath.substring(0,9)+"/001");
    //	System.out.println("Source Directory: " + "java" + studentPath.substring(1) + "/*.java");
     	System.out.println(pb.command().toString());
-	    Map<String, String> env = pb.environment();       
-	    env.clear();
-	    env.put("PATH", path);
-	    env.put("CLASSPATH", classPath.substring(0,9)+"/001");
+	   // Map<String, String> env = pb.environment();       
+	   // env.clear();
+	   // env.put("PATH", path);
+	    //env.put("CLASSPATH", classPath.substring(0,9)+"/001");
 	//    env.put("SOURCEPATH", sourcePath);
 	//    env.remove("OTHERVAR");
 	
 	//    Determine current working directory
-	    File cwd = pb.directory();
+	    //File cwd = pb.directory();
 	//    NB - ProcessBuilder default is to return a null  
 	//    pointer for the abstract path to indicate that it 
 	//    is using System.Properties "user.dir", i.e., the 
