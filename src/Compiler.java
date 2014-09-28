@@ -25,6 +25,8 @@ public class Compiler
 	    studentPath = stdPath;
 	    outputFileName = outFileName;
 	    success = 1;  // Outcome of compilation, success = 0
+	    System.out.println(studentPath);
+	    System.out.println(classPath);
 	  }
 	    
 	  public int compileJava()
@@ -36,7 +38,7 @@ public class Compiler
 // The way Mudgett did this was either incorrect or something was off, i am sure there is a method to make directories that sums this up, but this makes appropriate directories.
     	boolean createJava = new File(classPath.substring(1,5)).mkdir(); //java
     	boolean createJavaBin = new File(classPath.substring(1,9)).mkdir(); //java/bin
-    	boolean createJavaBin001 = new File(classPath.substring(1)).mkdir(); //java/bin/001
+    	boolean createJavaBin001 = new File(classPath.substring(1,9)+"/001").mkdir(); //java/bin/001
     	boolean createJavaSrc = new File(classPath.substring(1,5)+studentPath.substring(1,5)).mkdir();
     	boolean createJavaSrc001 = new File(classPath.substring(1,5)+studentPath.substring(1)).mkdir();
     	
@@ -51,17 +53,20 @@ public class Compiler
 	      
 */
 //This changes as well, above is the original. This might have worked in the end but was wrong.
-    	ProcessBuilder pb = new ProcessBuilder("javac", "-d", "." + classPath, "./java" + studentPath.substring(1) + "/*.java");
-	//    Create environment map and set environmental variables         
-	      Map<String, String> env = pb.environment();       
-	      env.clear();
-	      env.put("PATH", path);
-	      env.put("CLASSPATH", classPath);
+    	ProcessBuilder pb = new ProcessBuilder("javac", "-d", "." + classPath.substring(0,9)+"/001", "./java" + studentPath.substring(1) + "/*.java");
+	//    Create environment map and set environmental variables
+    //	System.out.println("Compile Directory: " + "." + classPath.substring(0,9)+"/001");
+   //	System.out.println("Source Directory: " + "java" + studentPath.substring(1) + "/*.java");
+    	System.out.println(pb.command().toString());
+	    Map<String, String> env = pb.environment();       
+	    env.clear();
+	    env.put("PATH", path);
+	    env.put("CLASSPATH", classPath.substring(0,9)+"/001");
 	//    env.put("SOURCEPATH", sourcePath);
 	//    env.remove("OTHERVAR");
 	
 	//    Determine current working directory
-	      File cwd = pb.directory();
+	    File cwd = pb.directory();
 	//    NB - ProcessBuilder default is to return a null  
 	//    pointer for the abstract path to indicate that it 
 	//    is using System.Properties "user.dir", i.e., the 

@@ -102,7 +102,7 @@ public class RunInfo {
         inLine = new Scanner(line);
         studentHandle = inLine.next();    
 // Setup names for compiler        
-        classPath = "/java/bin/" + className + studentName;
+        classPath = "/java/bin/" + studentName; //changed, removed class path from between bin and student.
         studentPath = sourcePath + "/" + studentName;
         inputFileStub = studentPath + "/input";
         outputFileName = studentPath + "/output-" + studentName + ".txt";
