@@ -27,6 +27,7 @@ public class Compiler
 	    success = 1;  // Outcome of compilation, success = 0
 	    System.out.println(studentPath);
 	    System.out.println(classPath);
+	    
 	  }
 	    
 	  public int compileJava()
@@ -38,7 +39,7 @@ public class Compiler
 // The way Mudgett did this was either incorrect or something was off, i am sure there is a method to make directories that sums this up, but this makes appropriate directories.
     	boolean createJava = new File(classPath.substring(1,5)).mkdir(); //java
     	boolean createJavaBin = new File(classPath.substring(1,9)).mkdir(); //java/bin
-    	boolean createJavaBin001 = new File(classPath.substring(1,9)+"/001").mkdir(); //java/bin/001
+    	boolean createJavaBin001 = new File(classPath.substring(1)).mkdir(); //java/bin/001
     	boolean createJavaSrc = new File(classPath.substring(1,5)+studentPath.substring(1,5)).mkdir();
     	boolean createJavaSrc001 = new File(classPath.substring(1,5)+studentPath.substring(1)).mkdir();
     	
@@ -53,7 +54,7 @@ public class Compiler
 	      
 */
 //This changes as well, above is the original. This might have worked in the end but was wrong.
-    	ProcessBuilder pb = new ProcessBuilder("javac", "-d", "." + classPath.substring(0,9)+"/001", "./java" + studentPath.substring(1) + "/*.java");
+    	ProcessBuilder pb = new ProcessBuilder("javac", "-d", "." + classPath, "./java" + studentPath.substring(1) + "/*.java");
 	//    Create environment map and set environmental variables
     //	System.out.println("Compile Directory: " + "." + classPath.substring(0,9)+"/001");
    //	System.out.println("Source Directory: " + "java" + studentPath.substring(1) + "/*.java");
